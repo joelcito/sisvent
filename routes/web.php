@@ -23,7 +23,13 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function(){
+
     Route::get('/home', [HomeController::class, 'index']);
+
+    // Route::prefix('/rol')->group(function(){
+    //     Route::get('/listado', [EmpresaController::class, 'listado']);
+    // })
+
 
     // AQUI CODIGO DE YERAA!!!
 });
