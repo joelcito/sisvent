@@ -24,4 +24,6 @@ Auth::routes();
 
 Route::middleware('auth')->group(function(){
     Route::get('/home', [HomeController::class, 'index']);
+
+    // AQUI CODIGO DE YERAA!!!
 });
