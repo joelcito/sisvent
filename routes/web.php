@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,10 +27,13 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/home', [HomeController::class, 'index']);
 
-    // Route::prefix('/rol')->group(function(){
-    //     Route::get('/listado', [EmpresaController::class, 'listado']);
-    // })
-
+    Route::prefix('/cliente')->group(function(){
+        Route::get('/listado', [ClienteController::class, 'listado']);
+        Route::post('/ajaxListado', [ClienteController::class, 'ajaxListado']);
+        Route::post('/guardarCliente', [ClienteController::class, 'guardarCliente']);
+        Route::post('/eliminarCliente', [ClienteController::class, 'eliminarCliente']);
+        
+    });
 
     // AQUI CODIGO DE YERAA!!!
 });
