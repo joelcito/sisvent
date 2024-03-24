@@ -3,63 +3,78 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    public function listado(Request $request){
+   //hola ya estoy en el listado
+    return view('categoria.listado');
+        
+}
+   
+
+    public function ajaxListado(Request $request){
+        if($request->ajax()){
+
+            $categorias = Categoria::all();
+
+            $data['listado'] = view('categoria.ajaxListado')->with(compact('categorias'))->render();
+            $data['estado'] = "success";
+
+        }else{
+            $data['estado'] = "error";
+            $data['texto'] = "No Existe";
+        }
+        return $data;
+    }
+     
+    public function guardarCategoria(Request $request){
+        if($request->ajax()){
+
+            $categoria_id = $request->input('categoria_id');
+            
+            if($categoria_id === "0"){
+                $categoria                     = new Categoria();
+                $categoria->usuario_creador_id = Auth::user()->id;
+            }else{
+                $categoria                   = Categoria::find($categoria_id);
+                $categoria->usuario_modificador_id = Auth::user()->id;
+            }
+
+            $categoria->nombre         = $request->input('nombre');
+            $categoria->descripcion    = $request->input('descripcion');
+            $categoria->save();
+
+            $data['estado'] = "success";
+
+        }else{
+            $data['estado'] = "error";
+            $data['texto'] = "No Existe";
+        }
+        return $data;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    public function eliminarCategoria(Request $request){
+        if($request->ajax()){
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+            $categoria_id = $request->input('categoria');
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Categoria $categoria)
-    {
-        //
-    }
+            $categoria                       = Categoria::find($categoria_id);
+            $categoria->usuario_eliminador_id = Auth::user()->id;
+            $categoria->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Categoria $categoria)
-    {
-        //
-    }
+            Categoria::destroy($categoria_id);
+            
+            $data['estado'] = "success";
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Categoria $categoria)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Categoria $categoria)
-    {
-        //
+        }else{
+            $data['estado'] = "error";
+            $data['texto'] = "No Existe";
+        }
+        return $data;
     }
 }
+

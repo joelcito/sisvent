@@ -308,11 +308,11 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="pages/user-profile/projects.html">
+                            <a class="menu-link" href="{{url('venta/listado')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Usuarios</span>
+                                <span class="menu-title">Ventas</span>
                             </a>
                             <!--end:Menu link-->
                         </div>
@@ -320,11 +320,11 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="{{url('rol/listado')}}">
+                            <a class="menu-link" href="{{url('sucursal/listado')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Roles</span>
+                                <span class="menu-title">Sucursales</span>
                             </a>
                             <!--end:Menu link-->
                         </div>
@@ -332,11 +332,11 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="pages/user-profile/documents.html">
+                            <a class="menu-link" href="{{url('categoria/listado')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Documents</span>
+                                <span class="menu-title">Categorias</span>
                             </a>
                             <!--end:Menu link-->
                         </div>

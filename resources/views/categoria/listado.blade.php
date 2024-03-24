@@ -9,59 +9,40 @@
 
      <!--end::Modal - New Card-->
     <!--begin::Modal - Add task-->
-    <div class="modal fade" id="modal_new_cliente" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="modal_new_categoria" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content ">
                 <div class="modal-header" id="kt_modal_add_user_header">
-                    <h2 class="fw-bold">FORMULARIO DE CLIENTE</h2>
+                    <h2 class="fw-bold">FORMULARIO DE CATEGORIAS</h2>
                 </div>
                 <div class="modal-body scroll-y">
-                    <form id="formulario_new_cliente">
-                        <div class="row">
+                    <form id="formulario_new_categoria">
+                        < class="row">
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Nombres</label>
+                                    <label class="required fw-semibold fs-6 mb-2">Nombre</label>
                                     <input type="text" id="nombre" name="nombre" class="form-control form-control-solid mb-3 mb-lg-0">
-                                    <input type="hidden" id="cliente_id" name="cliente_id">
+                                    <input type="hidden" id="categoria_id" name="categoria_id">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Ap Paterno</label>
-                                    <input type="text" id="ap_paterno" name="ap_paterno" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <label class="required fw-semibold fs-6 mb-2">Descripcion</label>
+                                    <input type="text" id="descripcion" name="descripcion" class="form-control form-control-solid mb-3 mb-lg-0">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Ap Materno</label>
-                                    <input type="text" id="ap_materno" name="ap_materno" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <label class="required fw-semibold fs-6 mb-2"></label>
+                                    <input type="text" id="" name="" class="form-control form-control-solid mb-3 mb-lg-0">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Cedula</label>
-                                    <input type="text" id="cedula" name="cedula" class="form-control form-control-solid mb-3 mb-lg-0">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Celular</label>
-                                    <input type="text" id="celular" name="celular" class="form-control form-control-solid mb-3 mb-lg-0">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Correo</label>
-                                    <input type="text" id="correo" name="correo" class="form-control form-control-solid mb-3 mb-lg-0">
-                                </div>
-                            </div>
+                        
                         </div>
                     </form>
                     <div class="row">
                         <div class="col-md-12">
-                            <button class="btn btn-success w-100" onclick="guardarCliente()">  Guardar Cliente</button>
+                            <button class="btn btn-success w-100" onclick="guardarCategoria()">  Guardar Categoria</button>
                         </div>
                     </div>
                 </div>
@@ -142,12 +123,12 @@
     <div class="card">
         <div class="card-header border-0 pt-6 bg-light-primary">
             <div class="card-title ">
-                <h1>Listado de Clientes</h1>
+                <h1>Listado de Categorias</h1>
             </div>
             <div class="card-toolbar">
                 <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                    <button type="button" class="btn btn-primary" onclick="nuevoCliente()">
-                    <i class="ki-duotone ki-plus fs-2"></i>Nuevo Cliente</button>
+                    <button type="button" class="btn btn-primary" onclick="nuevoCategoria()">
+                    <i class="ki-duotone ki-plus fs-2"></i>Nueva Categoria</button>
                 </div>
             </div>
         </div>
@@ -197,7 +178,7 @@
                     <button class="btn btn-success w-100 btn-sm mt-7" onclick="buscarFactura()"><i class="fa fa-search"></i>Buscar</button>
                 </div>
             </div> --}}
-            <div id="table_clientes">
+            <div id="table_categoria">
 
             </div>
         </div>
@@ -235,35 +216,32 @@
             // let datos = $('#formulario_busqueda_ventas').serializeArray();
             let datos = {};
             $.ajax({
-                url : "{{ url('cliente/ajaxListado') }}",
+                url : "{{ url('categoria/ajaxListado') }}",
                 type: 'POST',
                 data: datos,
                 dataType: 'json',
                 success: function(data) {
                     if(data.estado === 'success'){
-                        $('#table_clientes').html(data.listado);
+                        $('#table_categorias').html(data.listado);
                     }
                 }
             });
         }
 
-        function nuevoCliente(){
+        function nuevaCategoria(){
 
-            $('#cliente_id').val(0)
-            $('#nombres').val("")
-            $('#ap_paterno').val("")
-            $('#ap_materno').val("")
-            $('#correo').val("")
-            $('#celular').val("")
-            $('#cedula').val("")
+            $('#categoria_id').val(0)
+            $('#nombre').val("")
+            $('#descripcion').val("")
+         
 
-            $('#modal_new_cliente').modal('show')
+            $('#modal_new_categoria').modal('show')
         }
 
-        function guardarCliente(){
-            let datos = $('#formulario_new_cliente').serializeArray()
+        function guardarCategoria(){
+            let datos = $('#formulario_new_categoria').serializeArray()
             $.ajax({
-                url : "{{ url('cliente/guardarCliente') }}",
+                url : "{{ url('categoria/guardarCategoria') }}",
                 type: 'POST',
                 data: datos,
                 dataType: 'json',
@@ -276,27 +254,24 @@
                             timer:1500
                         })
                         ajaxListado();
-                        $('#modal_new_cliente').modal('hide')
+                        $('#modal_new_categoria').modal('hide')
                     }
                 }
             });
         }
 
-        function editarCliente(id,nombres,ap_paterno,ap_materno,cedula,celular,correo){
-            $('#cliente_id').val(id)
-            $('#nombres').val(nombres)
-            $('#ap_paterno').val(ap_paterno)
-            $('#ap_materno').val(ap_materno)
-            $('#correo').val(cedula)
-            $('#celular').val(celular)
-            $('#cedula').val(correo)
-
-            $('#modal_new_cliente').modal('show')
+        function editarCategoria(id,nombre,descripcion){
+           
+            $('#categoria_id').val(0)
+            $('#nombre').val("")
+            $('#descripcion').val("")
+         
+            $('#modal_new_categoria').modal('show')
         }
 
-        function eliminarCliente(id, nombre){
+        function eliminarCategoria(id, nombre){
             Swal.fire({
-                title: "Estas seguro de eliminar al cliente "+ nombre+"?",
+                title: "Estas seguro de eliminar categoria "+ nombre+"?",
                 text: "No podras revertir eso!",
                 icon: "warning",
                 showCancelButton: true,
@@ -307,10 +282,10 @@
                 if (result.isConfirmed) {
 
                     $.ajax({
-                        url : "{{ url('cliente/eliminarCliente') }}",
+                        url : "{{ url('categoria/eliminarCategoria') }}",
                         type: 'POST',
                         data: {
-                            cliente: id
+                            categoria: id
                         },
                         dataType: 'json',
                         success: function(data) {

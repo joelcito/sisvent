@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SucursalController;
+use App\Http\Controllers\VentaController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,5 +39,32 @@ Route::middleware('auth')->group(function(){
         
     });
 
-    // AQUI CODIGO DE YERAA!!!
+     Route::prefix('/venta')->group(function(){
+        Route::get('/listado', [VentaController::class, 'listado']);
+        Route::post('/ajaxListado', [VentaController::class, 'ajaxListado']);
+        Route::post('/guardarVenta', [VentaController::class, 'guardarVenta']);
+        Route::post('/eliminarVenta', [VentaController::class, 'eliminarVenta']);
+  
+    });
+
+    Route::prefix('/sucursal')->group(function(){
+        Route::get('/listado', [SucursalController::class, 'listado']);
+        Route::post('/ajaxListado', [SucursalController::class, 'ajaxListado']);
+        Route::post('/guardarSucursal', [SucursalController::class, 'guardarSucursal']);
+        Route::post('/eliminarSucursal', [SucursalController::class, 'eliminarSucursal']);
+
+    });
+       
+    Route::prefix('/categoria')->group(function(){
+        Route::get('/listado', [CategoriaController::class, 'listado']);
+        Route::post('/ajaxListado', [CategoriaController::class, 'ajaxListado']);
+        Route::post('/guardarCategoria', [CategoriaController::class, 'guardarCategoria']);
+        Route::post('/eliminarCategoria', [CategoriaController::class, 'eliminarCategoria']);
+
+    });
+
+
 });
+
+    
+
