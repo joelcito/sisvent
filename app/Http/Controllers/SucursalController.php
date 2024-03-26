@@ -33,6 +33,8 @@ class SucursalController extends Controller
         if($request->ajax()){
 
             $sucursal_id = $request->input('sucursal_id');
+
+            // dd($request->all());
             
             if($sucursal_id === "0"){
                 $sucursal                     = new Sucursal();
@@ -42,7 +44,7 @@ class SucursalController extends Controller
                 $sucursal->usuario_modificador_id = Auth::user()->id;
             }
 
-            $sucursal->nombre       = $request->input('fecha');
+            $sucursal->nombres       = $request->input('nombre');
             $sucursal->descripcion  = $request->input('descripcion');
             $sucursal->direccion    = $request->input('direccion');
             $sucursal->save();

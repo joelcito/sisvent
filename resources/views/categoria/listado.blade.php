@@ -17,7 +17,7 @@
                 </div>
                 <div class="modal-body scroll-y">
                     <form id="formulario_new_categoria">
-                        < class="row">
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Nombre</label>
@@ -222,13 +222,13 @@
                 dataType: 'json',
                 success: function(data) {
                     if(data.estado === 'success'){
-                        $('#table_categorias').html(data.listado);
+                        $('#table_categoria').html(data.listado);
                     }
                 }
             });
         }
 
-        function nuevaCategoria(){
+        function nuevoCategoria(){
 
             $('#categoria_id').val(0)
             $('#nombre').val("")

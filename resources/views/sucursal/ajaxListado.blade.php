@@ -19,13 +19,13 @@
                     </span>
                 </td>
                 <td>
-                    <a class="text-gray-800 text-hover-primary mb-1">{{ $suc->Nombres}}</a>
+                    <a class="text-gray-800 text-hover-primary mb-1">{{ $suc->nombres}}</a>
                 </td>
                 <td>
-                    <a class="text-gray-800 text-hover-primary mb-1">{{ $suc->Descripcion }}</a>
+                    <a class="text-gray-800 text-hover-primary mb-1">{{ $suc->descripcion }}</a>
                 </td>
                 <td>
-                    <a class="text-gray-800 text-hover-primary mb-1">{{ $suc->Direccion }}</a>
+                    <a class="text-gray-800 text-hover-primary mb-1">{{ $suc->direccion }}</a>
                 </td>
                 
                 <td>

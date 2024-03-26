@@ -33,6 +33,7 @@ class VentaController extends Controller
     public function guardarVenta(Request $request){
         if($request->ajax()){
 
+            dd($request->all());
             $venta_id = $request->input('venta_id');
             
             if($venta_id === "0"){
@@ -43,9 +44,9 @@ class VentaController extends Controller
                 $venta->usuario_modificador_id = Auth::user()->id;
             }
 
-            $venta->fecha           = $request->input('fecha');
-            $venta->descripcion     = $request->input('descripcion');
-            $venta->cantidad        = $request->input('cantidad');
+            $venta->fecha_venta           = $request->input('fecha');
+            // $venta->descripcion     = $request->input('descripcion');
+            // $venta->cantidad        = $request->input('cantidad');
             $venta->total_venta     = $request->input('total_venta');
             $venta->save();
 

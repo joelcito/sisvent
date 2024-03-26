@@ -44,7 +44,7 @@ class CategoriaController extends Controller
                 $categoria->usuario_modificador_id = Auth::user()->id;
             }
 
-            $categoria->nombre         = $request->input('nombre');
+            $categoria->nombres         = $request->input('nombre');
             $categoria->descripcion    = $request->input('descripcion');
             $categoria->save();
 

@@ -21,7 +21,7 @@
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Fecha </label>
-                                    <input type="text" id="nombre" name="nombre" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <input type="date" id="nombre" name="nombre" class="form-control form-control-solid mb-3 mb-lg-0">
                                     <input type="hidden" id="venta_id" name="venta_id">
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Cantidad</label>
-                                    <input type="text" id="cantidad" name="cantidad" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <input type="number" id="cantidad" name="cantidad" class="form-control form-control-solid mb-3 mb-lg-0">
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Total venta</label>
-                                    <input type="text" id="total_venta" name="total_venta" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <input type="number" id="total_venta" name="total_venta" class="form-control form-control-solid mb-3 mb-lg-0">
                                 </div>
                            
                             </div>

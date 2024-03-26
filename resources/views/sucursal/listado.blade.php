@@ -242,7 +242,7 @@
         function guardarSucursal(){
             let datos = $('#formulario_new_sucursal').serializeArray()
             $.ajax({
-                url : "{{ url('sucursal/guardarCliente') }}",
+                url : "{{ url('sucursal/guardarSucursal') }}",
                 type: 'POST',
                 data: datos,
                 dataType: 'json',
