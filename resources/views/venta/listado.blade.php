@@ -13,7 +13,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content ">
                 <div class="modal-header" id="kt_modal_add_user_header">
-                    <h2 class="fw-bold">FORMULARIO DE VENTA</h2>
+                    <h2 class="fw-bold">FORMULARIO DE VENTAS</h2>
                 </div>
                 <div class="modal-body scroll-y">
                     <form id="formulario_new_venta">
@@ -25,18 +25,13 @@
                                     <input type="hidden" id="venta_id" name="venta_id">
                                 </div>
                             </div>
-                            
-                        </div>
-                    </div>
-
-                        <div class="row">
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Total venta</label>
-                                    <input type="number" id="total_venta" name="total_venta" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <input type="decimal" id="total_venta" name="total_venta" class="form-control form-control-solid mb-3 mb-lg-0">
                                 </div>
-                           
                             </div>
+                     
                         </div>
                     </form>
                     <div class="row">
@@ -230,12 +225,10 @@
         function nuevaVenta(){
 
             $('#venta_id').val(0)
-            $('#fecha_venta').val()
+            $('#fecha_venta').val("")
           //  $('#descripcion').val("")
           //  $('#cantidad').val("")
-            $('#total_venta').val()
-            
-
+            $('#total_venta').val("")
             $('#modal_new_venta').modal('show')
         }
 
@@ -271,9 +264,9 @@
             $('#modal_new_venta').modal('show')
         }
 
-        function eliminarVenta(id, venta){
+        function eliminarVenta(id, fecha_venta){
             Swal.fire({
-                title: "Estas seguro de eliminar la venta "+ venta+"?",
+                title: "Estas seguro de eliminar la venta "+ fecha_venta+"?",
                 text: "No podras revertir eso!",
                 icon: "warning",
                 showCancelButton: true,
@@ -287,7 +280,7 @@
                         url : "{{ url('venta/eliminarVenta') }}",
                         type: 'POST',
                         data: {
-                            venta: id
+                           total_venta: id
                         },
                         dataType: 'json',
                         success: function(data) {

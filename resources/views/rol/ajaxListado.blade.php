@@ -17,15 +17,15 @@
                     </span>
                 </td>
                 <td>
-                    <a class="text-gray-800 text-hover-primary mb-1">{{ $rol->nombre }}</a>
+                    <a class="text-gray-800 text-hover-primary mb-1">{{ $rol->nombres }}</a>
                 </td>
                 <td>
                     <a class="text-gray-800 text-hover-primary mb-1">{{ $rol->descripcion }}</a>
                 </td>
                 
                 <td>
-                    <button class="btn btn-icon btn-sm btn-warning" onclick="editarRol('{{$rol->id}}', '{{$rol->nombre}}', '{{$rol->descripcion}}')"><i class="fa fa-edit"></i></button>
-                    <button class="btn btn-icon btn-sm btn-danger" onclick="eliminarRol('{{$rol->id}}', '{{$rol->nombre}}')"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-icon btn-sm btn-warning" onclick="editarRol('{{$rol->id}}', '{{$rol->nombres}}', '{{$rol->descripcion}}')"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-icon btn-sm btn-danger" onclick="eliminarRol('{{$rol->id}}', '{{$rol->nombres}}')"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
         @empty

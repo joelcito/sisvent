@@ -1,10 +1,11 @@
 <!--begin::Table-->
-<table class="table align-middle table-row-dashed fs-6 gy-5" id="table_ventas_2">
+<table class="table align-middle table-row-dashed fs-6 gy-5" id="table_ventas_6">
     <thead>
         <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
             <th>ID</th>
             <th>Fecha_venta</th>
             <th>Total_venta</th>
+            <th>Acciones</th>
            
         </tr>
     </thead>

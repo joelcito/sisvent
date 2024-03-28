@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoriaController extends Controller
 {
+    
     public function listado(Request $request){
    //hola ya estoy en el listado
     return view('categoria.listado');
@@ -44,7 +45,7 @@ class CategoriaController extends Controller
                 $categoria->usuario_modificador_id = Auth::user()->id;
             }
 
-            $categoria->nombres         = $request->input('nombre');
+            $categoria->nombres         = $request->input('nombres');
             $categoria->descripcion    = $request->input('descripcion');
             $categoria->save();
 

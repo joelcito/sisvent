@@ -20,8 +20,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Nombre</label>
-                                    <input type="text" id="nombre" name="nombre" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <label class="required fw-semibold fs-6 mb-2">Nombres</label>
+                                    <input type="text" id="nombres" name="nombres" class="form-control form-control-solid mb-3 mb-lg-0">
                                     <input type="hidden" id="categoria_id" name="categoria_id">
                                 </div>
                             </div>
@@ -31,15 +31,10 @@
                                     <input type="text" id="descripcion" name="descripcion" class="form-control form-control-solid mb-3 mb-lg-0">
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2"></label>
-                                    <input type="text" id="" name="" class="form-control form-control-solid mb-3 mb-lg-0">
-                                </div>
-                            </div>
+                           
                         
                         </div>
-                    </form>
+                        </form>
                     <div class="row">
                         <div class="col-md-12">
                             <button class="btn btn-success w-100" onclick="guardarCategoria()">  Guardar Categoria</button>
@@ -228,13 +223,12 @@
             });
         }
 
-        function nuevoCategoria(){
+        function nuevaCategoria(){
 
             $('#categoria_id').val(0)
-            $('#nombre').val("")
+            $('#nombres').val("")
             $('#descripcion').val("")
          
-
             $('#modal_new_categoria').modal('show')
         }
 
@@ -260,18 +254,18 @@
             });
         }
 
-        function editarCategoria(id,nombre,descripcion){
+        function editarCategoria(id,nombres,descripcion){
            
-            $('#categoria_id').val(0)
-            $('#nombre').val("")
-            $('#descripcion').val("")
+            $('#categoria_id').val(id)
+            $('#nombres').val(nombres)
+            $('#descripcion').val(descripcion)
          
             $('#modal_new_categoria').modal('show')
         }
 
-        function eliminarCategoria(id, nombre){
+        function eliminarCategoria(id, nombres){
             Swal.fire({
-                title: "Estas seguro de eliminar categoria "+ nombre+"?",
+                title: "Estas seguro de eliminar categoria "+ nombres+"?",
                 text: "No podras revertir eso!",
                 icon: "warning",
                 showCancelButton: true,
