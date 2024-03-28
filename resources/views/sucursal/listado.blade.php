@@ -20,8 +20,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Nombre</label>
-                                    <input type="text" id="nombre" name="nombre" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <label class="required fw-semibold fs-6 mb-2">Nombres</label>
+                                    <input type="text" id="nombres" name="nombres" class="form-control form-control-solid mb-3 mb-lg-0">
                                     <input type="hidden" id="sucursal_id" name="sucursal_id">
                                 </div>
                             </div>
@@ -232,7 +232,7 @@
         function nuevaSucursal(){
 
             $('#sucursal_id').val(0)
-            $('#nombre').val("")
+            $('#nombres').val("")
             $('#descripcion').val("")
             $('#direccion').val("")
           
@@ -242,7 +242,7 @@
         function guardarSucursal(){
             let datos = $('#formulario_new_sucursal').serializeArray()
             $.ajax({
-                url : "{{ url('sucursal/guardarCliente') }}",
+                url : "{{ url('sucursal/guardarSucursal') }}",
                 type: 'POST',
                 data: datos,
                 dataType: 'json',
@@ -261,18 +261,18 @@
             });
         }
 
-        function editarSucursal(id,nombre,descripcion,direccion,){
-            $('#sucursal_id').val(0)
-            $('#nombre').val("")
-            $('#descripcion').val("")
-            $('#direccion').val("")
+        function editarSucursal(id,nombres,descripcion,direccion,){
+            $('#sucursal_id').val(id)
+            $('#nombres').val(nombres)
+            $('#descripcion').val(descripcion)
+            $('#direccion').val(direccion)
 
             $('#modal_new_sucursal').modal('show')
         }
 
-        function eliminarSucursal(id, nombre){
+        function eliminarSucursal(id,nombres){
             Swal.fire({
-                title: "Estas seguro de eliminar sucursal "+ nombre+"?",
+                title: "Estas seguro de eliminar sucursal "+ nombres+"?",
                 text: "No podras revertir eso!",
                 icon: "warning",
                 showCancelButton: true,
@@ -286,7 +286,7 @@
                         url : "{{ url('sucursal/eliminarSucursal') }}",
                         type: 'POST',
                         data: {
-                            cliente: id
+                            sucursal: id
                         },
                         dataType: 'json',
                         success: function(data) {

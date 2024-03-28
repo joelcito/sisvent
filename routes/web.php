@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RolController;
 use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\VentaController;
 use Illuminate\Support\Facades\Auth;
@@ -63,7 +64,13 @@ Route::middleware('auth')->group(function(){
 
     });
 
+    Route::prefix('/rol')->group(function(){
+        Route::get('/listado', [RolController::class, 'listado']);
+        Route::post('/ajaxListado', [RolController::class, 'ajaxListado']);
+        Route::post('/guardarRol', [RolController::class, 'guardarRol']);
+        Route::post('/eliminarRol', [RolController::class, 'eliminarRol']);
 
+    });
 });
 
     

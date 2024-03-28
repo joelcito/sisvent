@@ -20,8 +20,8 @@ return new class extends Migration
             $table->foreign('usuario_eliminador_id')->references('id')->on('users');
             $table->unsignedBigInteger('usuario_eliminador_id')->nullable();
 
-            $table->dateTime('fecha_venta');
-            $table->decimal('total_venta',12,2);
+            $table->dateTime('fecha_venta')->nullable();
+            $table->decimal('total_venta',12,2)->nullable();
             
             $table->string('estado')->nullable();
             $table->datetime('deleted_at')->nullable();

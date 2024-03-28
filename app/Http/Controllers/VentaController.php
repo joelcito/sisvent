@@ -34,6 +34,7 @@ class VentaController extends Controller
         if($request->ajax()){
 
             $venta_id = $request->input('venta_id');
+           
             
             if($venta_id === "0"){
                 $venta                     = new Venta();
@@ -43,10 +44,10 @@ class VentaController extends Controller
                 $venta->usuario_modificador_id = Auth::user()->id;
             }
 
-            $venta->fecha           = $request->input('fecha');
-            $venta->descripcion     = $request->input('descripcion');
-            $venta->cantidad        = $request->input('cantidad');
-            $venta->total_venta     = $request->input('total_venta');
+            $venta->fecha_venta          = $request->input('fecha_venta');
+            //$venta->descripcion        = $request->input('descripcion');
+            //$venta->cantidad           = $request->input('cantidad');
+            $venta->total_venta          = $request->input('total_venta');
             $venta->save();
 
             $data['estado'] = "success";
@@ -61,7 +62,7 @@ class VentaController extends Controller
     public function eliminarVenta(Request $request){
         if($request->ajax()){
 
-            $venta_id = $request->input('venta');
+            $venta_id = $request->input('venta_id');
 
             $venta                       = Venta::find($venta_id);
             $venta->usuario_eliminador_id = Auth::user()->id;

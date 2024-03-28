@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('nombres')->nullable();
             $table->string('ap_paterno')->nullable();
             $table->string('ap_materno')->nullable();
-            $table->string('cedula')->nullable();
-            $table->string('celular')->nullable();
+            $table->number('cedula')->nullable();
+            $table->number('celular')->nullable();
             $table->string('correo')->nullable();
             
             $table->string('estado')->nullable();

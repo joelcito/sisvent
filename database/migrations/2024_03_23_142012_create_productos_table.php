@@ -20,16 +20,12 @@ return new class extends Migration
             $table->foreign('usuario_eliminador_id')->references('id')->on('users');
             $table->unsignedBigInteger('usuario_eliminador_id')->nullable();
             
-            $table->foreign('categoria_id')->references('id')->on('categorias');
-            $table->unsignedBigInteger('categoria_id')->nullable();
-            $table->foreign('sucursal_id')->references('id')->on('sucursales');
-            $table->unsignedBigInteger('sucursal_id')->nullable();
 
             $table->string('nombre')->nullable();
             $table->string('descripcion')->nullable();
-            $table->string('codigo')->nullable();
+            $table->number('codigo')->nullable();
             $table->decimal('precio', 12,2)->nullable();
-            $table->string('stock')->nullable();
+            $table->number('stock')->nullable();
 
             $table->string('estado')->nullable();
             $table->datetime('deleted_at')->nullable();

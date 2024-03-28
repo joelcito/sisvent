@@ -42,7 +42,7 @@ class SucursalController extends Controller
                 $sucursal->usuario_modificador_id = Auth::user()->id;
             }
 
-            $sucursal->nombre       = $request->input('fecha');
+            $sucursal->nombres       = $request->input('nombres');
             $sucursal->descripcion  = $request->input('descripcion');
             $sucursal->direccion    = $request->input('direccion');
             $sucursal->save();

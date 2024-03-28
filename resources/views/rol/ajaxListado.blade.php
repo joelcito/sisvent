@@ -1,30 +1,31 @@
 <!--begin::Table-->
-<table class="table align-middle table-row-dashed fs-6 gy-5" id="table_ventas_2">
+<table class="table align-middle table-row-dashed fs-6 gy-5" id="table_roles_1">
     <thead>
         <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
             <th>ID</th>
-            <th>Fecha_venta</th>
-            <th>Total_venta</th>
+            <th>Nombres</th>
+            <th>Descripcion</th>
            
         </tr>
     </thead>
     <tbody class="text-gray-600 fw-semibold">
-        @forelse ( $ventas as  $ven )
+        @forelse ( $roles as  $rol )
             <tr>
                 <td class="align-items-center">
                     <span class="text-info">
-                        {{ $ven->id }}
+                        {{ $rol->id }}
                     </span>
                 </td>
                 <td>
-                    <a class="text-gray-800 text-hover-primary mb-1">{{ $ven->fecha_venta }}</a>
+                    <a class="text-gray-800 text-hover-primary mb-1">{{ $rol->nombres }}</a>
                 </td>
                 <td>
-                    <a class="text-gray-800 text-hover-primary mb-1">{{ $ven->total_venta }}</a>
+                    <a class="text-gray-800 text-hover-primary mb-1">{{ $rol->descripcion }}</a>
                 </td>
+                
                 <td>
-                    <button class="btn btn-icon btn-sm btn-warning" onclick="editarVenta('{{$ven->id}}', '{{$ven->fecha_venta}}', '{{$ven->total_venta}}')"><i class="fa fa-edit"></i></button>
-                    <button class="btn btn-icon btn-sm btn-danger" onclick="eliminarVenta('{{$ven->id}}', '{{$ven->fecha_venta}}')"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-icon btn-sm btn-warning" onclick="editarRol('{{$rol->id}}', '{{$rol->nombres}}', '{{$rol->descripcion}}')"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-icon btn-sm btn-danger" onclick="eliminarRol('{{$rol->id}}', '{{$rol->nombres}}')"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
         @empty
@@ -35,7 +36,7 @@
 <!--end::Table-->
 {{-- <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script> --}}
 <script>
-    $('#table_ventas_2').DataTable({
+    $('#table_roles_1').DataTable({
         // lengthMenu: [ -1 ],
         // ordering: true,
         // initComplete: function() {
@@ -43,4 +44,5 @@
         // }
     });
 </script>
+<!--begin::Table-->
 

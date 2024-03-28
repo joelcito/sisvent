@@ -21,7 +21,7 @@
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Nombres</label>
-                                    <input type="text" id="nombre" name="nombre" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <input type="text" id="nombres" name="nombres" class="form-control form-control-solid mb-3 mb-lg-0">
                                     <input type="hidden" id="cliente_id" name="cliente_id">
                                 </div>
                             </div>
@@ -42,13 +42,13 @@
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Cedula</label>
-                                    <input type="text" id="cedula" name="cedula" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <input type="number" id="cedula" name="cedula" class="form-control form-control-solid mb-3 mb-lg-0">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Celular</label>
-                                    <input type="text" id="celular" name="celular" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <input type="number" id="celular" name="celular" class="form-control form-control-solid mb-3 mb-lg-0">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -197,7 +197,7 @@
                     <button class="btn btn-success w-100 btn-sm mt-7" onclick="buscarFactura()"><i class="fa fa-search"></i>Buscar</button>
                 </div>
             </div> --}}
-            <div id="table_clientes">
+            <div id="table_cliente">
 
             </div>
         </div>
@@ -241,7 +241,7 @@
                 dataType: 'json',
                 success: function(data) {
                     if(data.estado === 'success'){
-                        $('#table_clientes').html(data.listado);
+                        $('#table_cliente').html(data.listado);
                     }
                 }
             });
@@ -294,7 +294,7 @@
             $('#modal_new_cliente').modal('show')
         }
 
-        function eliminarCliente(id, nombre){
+        function eliminarCliente(id, nombres){
             Swal.fire({
                 title: "Estas seguro de eliminar al cliente "+ nombre+"?",
                 text: "No podras revertir eso!",

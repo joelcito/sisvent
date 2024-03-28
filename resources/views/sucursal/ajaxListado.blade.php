@@ -3,10 +3,9 @@
     <thead>
         <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
             <th>ID</th>
-            <th>Nombre</th>
+            <th>Nombres</th>
             <th>Descripcion/th>
             <th>Direccion</th>
-            <th></th>
            
         </tr>
     </thead>
@@ -19,18 +18,18 @@
                     </span>
                 </td>
                 <td>
-                    <a class="text-gray-800 text-hover-primary mb-1">{{ $suc->Nombres}}</a>
+                    <a class="text-gray-800 text-hover-primary mb-1">{{ $suc->nombres}}</a>
                 </td>
                 <td>
-                    <a class="text-gray-800 text-hover-primary mb-1">{{ $suc->Descripcion }}</a>
+                    <a class="text-gray-800 text-hover-primary mb-1">{{ $suc->descripcion }}</a>
                 </td>
                 <td>
-                    <a class="text-gray-800 text-hover-primary mb-1">{{ $suc->Direccion }}</a>
+                    <a class="text-gray-800 text-hover-primary mb-1">{{ $suc->direccion }}</a>
                 </td>
                 
                 <td>
-                    <button class="btn btn-icon btn-sm btn-warning" onclick="editarSucursal('{{$suc->id}}', '{{$suc->nombre}}', '{{$suc->descripcion}}', '{{$suc->direccion}}')"><i class="fa fa-edit"></i></button>
-                    <button class="btn btn-icon btn-sm btn-danger" onclick="eliminarSucursal('{{$suc->id}}', '{{$suc->nombre}}')"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-icon btn-sm btn-warning" onclick="editarSucursal('{{$suc->id}}', '{{$suc->nombres}}', '{{$suc->descripcion}}', '{{$suc->direccion}}')"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-icon btn-sm btn-danger" onclick="eliminarSucursal('{{$suc->id}}', '{{$suc->nombres}}')"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
         @empty

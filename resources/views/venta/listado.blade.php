@@ -13,36 +13,27 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content ">
                 <div class="modal-header" id="kt_modal_add_user_header">
-                    <h2 class="fw-bold">FORMULARIO DE VENTAS</h2>
+                    <h2 class="fw-bold">FORMULARIO DE VENTA</h2>
                 </div>
                 <div class="modal-body scroll-y">
                     <form id="formulario_new_venta">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Fecha </label>
-                                    <input type="text" id="nombre" name="nombre" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <label class="required fw-semibold fs-6 mb-2">Fecha venta </label>
+                                    <input type="date" id="fecha_venta" name="fecha_venta" class="form-control form-control-solid mb-3 mb-lg-0">
                                     <input type="hidden" id="venta_id" name="venta_id">
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Descripcion</label>
-                                    <input type="text" id="descripcion" name="descripcion" class="form-control form-control-solid mb-3 mb-lg-0">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Cantidad</label>
-                                    <input type="text" id="cantidad" name="cantidad" class="form-control form-control-solid mb-3 mb-lg-0">
-                                </div>
-                            </div>
+                            
                         </div>
+                    </div>
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Total venta</label>
-                                    <input type="text" id="total_venta" name="total_venta" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <input type="number" id="total_venta" name="total_venta" class="form-control form-control-solid mb-3 mb-lg-0">
                                 </div>
                            
                             </div>
@@ -186,7 +177,7 @@
                     <button class="btn btn-success w-100 btn-sm mt-7" onclick="buscarFactura()"><i class="fa fa-search"></i>Buscar</button>
                 </div>
             </div> --}}
-            <div id="table_ventas">
+            <div id="table_venta">
 
             </div>
         </div>
@@ -230,7 +221,7 @@
                 dataType: 'json',
                 success: function(data) {
                     if(data.estado === 'success'){
-                        $('#table_ventas').html(data.listado);
+                        $('#table_venta').html(data.listado);
                     }
                 }
             });
@@ -239,10 +230,10 @@
         function nuevaVenta(){
 
             $('#venta_id').val(0)
-            $('#fecha').val("")
-            $('#descripcion').val("")
-            $('#cantidad').val("")
-            $('#total_venta').val("")
+            $('#fecha_venta').val()
+          //  $('#descripcion').val("")
+          //  $('#cantidad').val("")
+            $('#total_venta').val()
             
 
             $('#modal_new_venta').modal('show')
@@ -270,19 +261,19 @@
             });
         }
 
-        function editarVenta(id,fecha,descripcion,cantidad,total_venta){
+        function editarVenta(id,fecha_venta,total_venta){
             $('#venta_id').val(id)
-            $('#fecha').val("")
-            $('#descripcion').val("")
-            $('#cantidad').val("")
-            $('#total_venta').val("")
+            $('#fecha_venta').val(fecha_venta)
+           // $('#descripcion').val("")
+           // $('#cantidad').val("")
+            $('#total_venta').val(total_venta)
 
             $('#modal_new_venta').modal('show')
         }
 
         function eliminarVenta(id, venta){
             Swal.fire({
-                title: "Estas seguro de eliminar al cliente "+ venta+"?",
+                title: "Estas seguro de eliminar la venta "+ venta+"?",
                 text: "No podras revertir eso!",
                 icon: "warning",
                 showCancelButton: true,
