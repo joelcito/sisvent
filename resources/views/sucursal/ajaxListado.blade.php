@@ -6,7 +6,7 @@
             <th>Nombres</th>
             <th>Descripcion/th>
             <th>Direccion</th>
-           
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody class="text-gray-600 fw-semibold">

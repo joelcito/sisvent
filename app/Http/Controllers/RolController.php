@@ -42,7 +42,7 @@ class RolController extends Controller
                 $rol->usuario_modificador_id = Auth::user()->id;
             }
 
-            $rol->nombres           = $request->input('nombres');
+            $rol->nombre           = $request->input('nombres');
             $rol->descripcion       = $request->input('descripcion');
             $rol->save();
 

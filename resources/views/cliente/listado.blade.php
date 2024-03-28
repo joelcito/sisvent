@@ -296,7 +296,7 @@
 
         function eliminarCliente(id, nombres){
             Swal.fire({
-                title: "Estas seguro de eliminar al cliente "+ nombre+"?",
+                title: "Estas seguro de eliminar al cliente "+ nombres+"?",
                 text: "No podras revertir eso!",
                 icon: "warning",
                 showCancelButton: true,

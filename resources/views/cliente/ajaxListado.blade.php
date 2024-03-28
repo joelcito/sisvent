@@ -9,6 +9,7 @@
             <th>Correo</th>
             <th>Celular</th>
             <th>Cedula</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody class="text-gray-600 fw-semibold">

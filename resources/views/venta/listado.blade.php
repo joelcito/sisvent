@@ -20,32 +20,12 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
-<<<<<<< HEAD
                                     <label class="required fw-semibold fs-6 mb-2">Fecha venta </label>
                                     <input type="date" id="fecha_venta" name="fecha_venta" class="form-control form-control-solid mb-3 mb-lg-0">
                                     <input type="hidden" id="venta_id" name="venta_id">
                                 </div>
                             </div>
                             
-=======
-                                    <label class="required fw-semibold fs-6 mb-2">Fecha </label>
-                                    <input type="date" id="nombre" name="nombre" class="form-control form-control-solid mb-3 mb-lg-0">
-                                    <input type="hidden" id="venta_id" name="venta_id">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Descripcion</label>
-                                    <input type="text" id="descripcion" name="descripcion" class="form-control form-control-solid mb-3 mb-lg-0">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Cantidad</label>
-                                    <input type="number" id="cantidad" name="cantidad" class="form-control form-control-solid mb-3 mb-lg-0">
-                                </div>
-                            </div>
->>>>>>> 9ec0d786200d045653ee49b36a41b6550e14a9da
                         </div>
                     </div>
 

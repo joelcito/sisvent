@@ -43,7 +43,7 @@ class ClienteController extends Controller
                 $cliente->usuario_modificador_id = Auth::user()->id;
             }
 
-            $cliente->nombres            = $request->input('nombre');
+            $cliente->nombres            = $request->input('nombres');
             $cliente->ap_paterno         = $request->input('ap_paterno');
             $cliente->ap_materno         = $request->input('ap_materno');
             $cliente->cedula             = $request->input('cedula');
