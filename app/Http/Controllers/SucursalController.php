@@ -33,6 +33,8 @@ class SucursalController extends Controller
         if($request->ajax()){
 
             $sucursal_id = $request->input('sucursal_id');
+
+            // dd($request->all());
             
             if($sucursal_id === "0"){
                 $sucursal                     = new Sucursal();

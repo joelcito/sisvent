@@ -33,6 +33,7 @@ class VentaController extends Controller
     public function guardarVenta(Request $request){
         if($request->ajax()){
 
+            dd($request->all());
             $venta_id = $request->input('venta_id');
            
             

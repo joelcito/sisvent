@@ -5,8 +5,6 @@
             <th>Nombre</th>
             <th>Descripcion</th>
             <th></th>
-            
-           
         </tr>
     </thead>
     <tbody class="text-gray-600 fw-semibold">
@@ -18,18 +16,13 @@
                     </span>
                 </td>
                 <td>
-                    <a class="text-gray-800 text-hover-primary mb-1">{{ $cat->nombre }}</a>
+                    <a class="text-gray-800 text-hover-primary mb-1">{{ $cat->nombres }}</a>
                 </td>
                 <td>
                     <a class="text-gray-800 text-hover-primary mb-1">{{ $cat->descripcion }}</a>
                 </td>
                 <td>
-                    <a class="text-gray-800 text-hover-primary mb-1">{{ $cat->}}</a>
-                </td>
-                <td>
-                
-                <td>
-                    <button class="btn btn-icon btn-sm btn-warning" onclick="editarCategoria('{{$cat->id}}', '{{$cat->nombre}}', '{{$cat->descripcion}}', '{{$cat->}}')"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-icon btn-sm btn-warning" onclick="editarCategoria('{{$cat->id}}', '{{$cat->nombre}}', '{{$cat->descripcion}}')"><i class="fa fa-edit"></i></button>
                     <button class="btn btn-icon btn-sm btn-danger" onclick="eliminarCategoria('{{$cat->id}}', '{{$cat->nombre}}')"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
