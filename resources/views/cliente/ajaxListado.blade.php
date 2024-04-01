@@ -19,7 +19,7 @@
                     <span class="text-info">
                         {{ $cli->id }}
                     </span>
-                </td>
+                 </td>
                 <td>
                     <a class="text-gray-800 text-hover-primary mb-1">{{ $cli->nombres }}</a>
                 </td>
