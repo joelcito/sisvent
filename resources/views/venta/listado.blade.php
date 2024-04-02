@@ -28,7 +28,7 @@
                             <div class="col-md-4">
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Total venta</label>
-                                    <input type="number" id="total_venta" name="total_venta" class="form-control form-control-solid mb-3 mb-lg-0">
+                                    <input type="decimal" id="total_venta" name="total_venta" class="form-control form-control-solid mb-3 mb-lg-0">
                                 </div>
                             </div>
                      

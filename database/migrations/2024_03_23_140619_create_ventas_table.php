@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('usuario_eliminador_id')->nullable();
 
             $table->dateTime('fecha_venta')->nullable();
-            $table->decimal('total_venta',12,2)->nullable();
+            $table->decimal('total_venta', 12,2)->nullable();
             
             $table->string('estado')->nullable();
             $table->datetime('deleted_at')->nullable();
