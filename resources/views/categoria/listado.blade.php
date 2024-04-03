@@ -222,7 +222,7 @@
             });
         }
 
-        function nuevaCategoria(){
+        function nuevoCategoria(){
 
             $('#categoria_id').val(0)
             $('#nombres').val("")

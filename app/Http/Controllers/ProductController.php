@@ -2,33 +2,68 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Product;
+use App\Models\Sucursal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+
+    public function listado(Request $request){
+
+        $sucursales = Sucursal::all();
+        $categorias = Categoria::all();
+
+        return view('producto.listado')->with(compact('sucursales', 'categorias'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function guardarProducto(Request $request){
+        if($request->ajax()){
+
+            $producto_id = $request->input('producto_id');
+
+            if($producto_id == "0"){
+                $producto                     = new Product();
+                $producto->usuario_creador_id = Auth::user()->id;
+            }else{
+                $producto                         = Product::find($producto_id);
+                $producto->usuario_modificador_id = Auth::user()->id;
+            }
+            
+            $producto->sucursal_id  = $request->input('sucursal_id');
+            $producto->categoria_id = $request->input('categoria_id');
+            $producto->nombre       = $request->input('nombres');
+            $producto->descripcion  = $request->input('descripcion');
+            $producto->codigo       = $request->input('codigo');
+            $producto->precio       = $request->input('precio');
+            $producto->stock        = $request->input('stock');
+
+            $producto->save();
+            $data['estado'] = 'success';
+
+        }else{
+            $data['estado'] = 'error';
+            $data['mensaje'] = 'No Existe';
+        }
+        return $data;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function ajaxListado(Request $request)
     {
-        //
+        if($request->ajax()){
+
+            $productos = Product::all();
+
+            $data['estado'] = 'success';
+            $data['listado'] = view('producto.ajaxListado')->with(compact('productos'))->render();
+
+        }else{
+            $data['estado'] = 'error';
+            $data['mensaje'] = 'No Existe';
+        }
+        return $data;
     }
 
     /**

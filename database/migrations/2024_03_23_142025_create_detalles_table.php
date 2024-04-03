@@ -23,11 +23,12 @@ return new class extends Migration
             $table->unsignedBigInteger('cliente_id')->nullable();
             $table->foreign('venta_id')->references('id')->on('ventas');
             $table->unsignedBigInteger('venta_id')->nullable();
-            $table->foreign('prodcuto_id')->references('id')->on('productos');
-            $table->unsignedBigInteger('prodcuto_id')->nullable();
+            $table->foreign('producto_id')->references('id')->on('productos');
+            $table->unsignedBigInteger('producto_id')->nullable();
 
             $table->dateTime('fecha')->nullable();
             $table->decimal('total',12,2)->nullable();
+            $table->string('cantidad')->nullable();
             
             $table->string('estado')->nullable();
             $table->datetime('deleted_at')->nullable();

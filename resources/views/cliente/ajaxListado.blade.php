@@ -39,6 +39,7 @@
                     <a class="text-gray-800 text-hover-primary mb-1">{{ $cli->cedula }}</a>
                 </td>
                 <td>
+                    <button class="btn btn-icon btn-sm btn-success" onclick="elegirCliente('{{$cli->id}}', '{{$cli->nombres}}', '{{$cli->ap_paterno}}', '{{$cli->ap_materno}}', '{{$cli->cedula}}')"><i class="fa fa-dollar"></i></button>
                     <button class="btn btn-icon btn-sm btn-warning" onclick="editarCliente('{{$cli->id}}', '{{$cli->nombres}}', '{{$cli->ap_paterno}}', '{{$cli->ap_materno}}', '{{$cli->correo}}', '{{$cli->celular}}', '{{$cli->cedula}}')"><i class="fa fa-edit"></i></button>
                     <button class="btn btn-icon btn-sm btn-danger" onclick="eliminarCliente('{{$cli->id}}', '{{$cli->nombres}}')"><i class="fa fa-trash"></i></button>
                 </td>

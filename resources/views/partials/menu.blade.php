@@ -356,11 +356,11 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="pages/user-profile/activity.html">
+                            <a class="menu-link" href="{{ url('producto/listado') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Activity</span>
+                                <span class="menu-title">Productos</span>
                             </a>
                             <!--end:Menu link-->
                         </div>

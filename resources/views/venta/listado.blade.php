@@ -220,7 +220,7 @@
             $('#total_venta').val("")
            
 
-            $('#modal_new_cliente').modal('show')
+            $('#modal_new_venta').modal('show')
         }
 
         function guardarVenta(){
@@ -288,4 +288,4 @@
             });
         }
     </script>   
-    
+@endsection

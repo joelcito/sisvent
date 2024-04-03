@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\VentaController;
@@ -37,6 +38,12 @@ Route::middleware('auth')->group(function(){
         Route::post('/ajaxListado', [ClienteController::class, 'ajaxListado']);
         Route::post('/guardarCliente', [ClienteController::class, 'guardarCliente']);
         Route::post('/eliminarCliente', [ClienteController::class, 'eliminarCliente']);
+        Route::post('/buscarProducto', [ClienteController::class, 'buscarProducto']);
+        Route::post('/agregarProducuto', [ClienteController::class, 'agregarProducuto']);
+        Route::post('/ajaxListadoProductosAgregados', [ClienteController::class, 'ajaxListadoProductosAgregados']);
+        Route::post('/guardarVenta', [ClienteController::class, 'guardarVenta']);
+        
+
         
     });
 
@@ -69,7 +76,14 @@ Route::middleware('auth')->group(function(){
         Route::post('/ajaxListado', [RolController::class, 'ajaxListado']);
         Route::post('/guardarRol', [RolController::class, 'guardarRol']);
         Route::post('/eliminarRol', [RolController::class, 'eliminarRol']);
+    });
 
+    
+    Route::prefix('/producto')->group(function(){
+        Route::get('/listado', [ProductController::class, 'listado']);
+        Route::post('/ajaxListado', [ProductController::class, 'ajaxListado']);
+        Route::post('/guardarProducto', [ProductController::class, 'guardarProducto']);
+        // Route::post('/eliminarRol', [RolController::class, 'eliminarRol']);
     });
 });
 
