@@ -121,8 +121,8 @@
             </div>
             <div class="card-toolbar">
                 <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                    <button type="button" class="btn btn-primary" onclick="nuevaVenta()">
-                    <i class="ki-duotone ki-plus fs-2"></i>Nueva Venta</button>
+                    {{-- <button type="button" class="btn btn-primary" onclick="nuevaVenta()">
+                    <i class="ki-duotone ki-plus fs-2"></i>Nueva Venta</button> --}}
                 </div>
             </div>
         </div>

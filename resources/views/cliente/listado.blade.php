@@ -361,7 +361,31 @@
                 dataType: 'json',
                 success: function(data) {
                     if(data.estado === 'success'){
-                        $('#tabla_productos_agregados').html(data.listado)
+
+                        Swal.fire({
+                            icon:'success',
+                            title: 'Exito!',
+                            text:"Se realizo la venta con exito!",
+                            timer:1500
+                        })
+
+                        window.location.href = "{{ url('venta/listado') }}";
+                    }
+                }
+            });
+        }
+
+        function eliminarPrdcuto(detalle, cliente){
+            $.ajax({
+                url : "{{ url('cliente/eliminarPrdcuto') }}",
+                type: 'POST',
+                data: {
+                    detalle_id : detalle
+                },
+                dataType: 'json',
+                success: function(data) {
+                    if(data.estado === 'success'){
+                        ajaxListadoProductosAgregados(cliente)
                     }
                 }
             });

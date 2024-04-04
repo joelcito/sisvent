@@ -18,7 +18,12 @@ class VentaController extends Controller
     public function ajaxListado(Request $request){
         if($request->ajax()){
 
-            $ventas = Venta::all();
+            // $ventas = Venta::all();
+            $ventas = Venta::select('detalles.venta_id', 'ventas.total_venta', 'ventas.fecha_venta', 'detalles.cliente_id')
+                            ->join('detalles', 'ventas.id', '=', 'detalles.venta_id')
+                            ->groupBy('detalles.venta_id', 'detalles.cliente_id')
+                            ->orderBy('detalles.venta_id', 'desc')
+                            ->get();
 
             $data['listado'] = view('venta.ajaxListado')->with(compact('ventas'))->render();
             $data['estado'] = "success";

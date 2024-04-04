@@ -177,5 +177,17 @@ class ClienteController extends Controller
         return $data;
     }
 
+    public function  eliminarPrdcuto(Request $request){
+        if($request->ajax()){
+            $detalle_id = $request->input('detalle_id');
+            Detalle::destroy($detalle_id);
+            $data['estado']   = "success";
+        }else{
+            $data['estado'] = "error";
+            $data['texto'] = "No Existe";
+        }
+        return $data;
+    }
+
 }
  

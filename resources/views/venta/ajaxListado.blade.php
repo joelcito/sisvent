@@ -3,10 +3,10 @@
     <thead>
         <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
             <th>ID</th>
+            <th>Cliente</th>
             <th>Fecha_venta</th>
             <th>Total_venta</th>
-            <th>Acciones</th>
-           
+            {{-- <th>Acciones</th> --}}
         </tr>
     </thead>
     <tbody class="text-gray-600 fw-semibold">
@@ -14,19 +14,20 @@
             <tr>
                 <td class="align-items-center">
                     <span class="text-info">
-                        {{ $ven->id }}
+                        {{ $ven->venta_id }}
                     </span>
                 </td>
+                <td>{{ $ven->cliente->nombres." ".$ven->cliente->ap_paterno." ".$ven->cliente->ap_materno }}</td>
                 <td>
                     <a class="text-gray-800 text-hover-primary mb-1">{{ $ven->fecha_venta }}</a>
                 </td>
                 <td>
                     <a class="text-gray-800 text-hover-primary mb-1">{{ $ven->total_venta }}</a>
                 </td>
-                <td>
+                {{-- <td>
                     <button class="btn btn-icon btn-sm btn-warning" onclick="editarVenta('{{$ven->id}}', '{{$ven->fecha_venta}}', '{{$ven->total_venta}}')"><i class="fa fa-edit"></i></button>
                     <button class="btn btn-icon btn-sm btn-danger" onclick="eliminarVenta('{{$ven->id}}', '{{$ven->fecha_venta}}')"><i class="fa fa-trash"></i></button>
-                </td>
+                </td> --}}
             </tr>
         @empty
             <h4 class="text-danger text-center">Sin registros</h4>

@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function(){
         Route::post('/agregarProducuto', [ClienteController::class, 'agregarProducuto']);
         Route::post('/ajaxListadoProductosAgregados', [ClienteController::class, 'ajaxListadoProductosAgregados']);
         Route::post('/guardarVenta', [ClienteController::class, 'guardarVenta']);
+        Route::post('/eliminarPrdcuto', [ClienteController::class, 'eliminarPrdcuto']);
         
 
         

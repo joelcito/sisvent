@@ -11,7 +11,13 @@
         </tr>
     </thead>
     <tbody class="text-gray-600 fw-semibold">
+        @php
+            $totalVenta = 0;
+        @endphp
         @forelse ( $detalles as  $det )
+            @php
+                $totalVenta = $totalVenta + ($det->cantidad *$det->producto->precio );
+            @endphp
             <tr>
                 <td class="align-items-center">
                     <span class="text-info">
@@ -31,13 +37,19 @@
                     <a class="text-gray-800 text-hover-primary mb-1">{{ $det->fecha }}</a>
                 </td>
                 <td>
-                    
+                    <button class="btn btn-danger btn-icon btn-sm" onclick="eliminarPrdcuto('{{ $det->id }}', '{{ $det->cliente_id }}')"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
         @empty
             <h4 class="text-danger text-center">Sin registros</h4>
         @endforelse
     </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="5">TOTAL</th>
+            <th>{{ $totalVenta }}</th>
+        </tr>
+    </tfoot>
 </table>
 <div class="row">
     <div class="col-md-12">
