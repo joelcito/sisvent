@@ -73,7 +73,7 @@ class OnDriveController extends Controller
         $accessToken = session('accessToken');
         $graph = new Graph();
         $graph->setAccessToken($accessToken);
- 
+
         $file = $request->file('file');
         $content = file_get_contents($file->getRealPath());
 
@@ -81,6 +81,7 @@ class OnDriveController extends Controller
                         ->upload($content);
 
         // dd($upload);
+
 
         return response()->json(['message' => 'File uploaded successfully']);
 
