@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+use Microsoft\Graph\GraphServiceProvider;
 
 return [
 
@@ -168,6 +169,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        // Microsoft\Graph\GraphServiceProvider::class
     ])->toArray(),
 
     /*

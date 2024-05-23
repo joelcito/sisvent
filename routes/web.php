@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthControllerOneDrive;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OnDriveController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\SucursalController;
@@ -43,9 +45,9 @@ Route::middleware('auth')->group(function(){
         Route::post('/ajaxListadoProductosAgregados', [ClienteController::class, 'ajaxListadoProductosAgregados']);
         Route::post('/guardarVenta', [ClienteController::class, 'guardarVenta']);
         Route::post('/eliminarPrdcuto', [ClienteController::class, 'eliminarPrdcuto']);
-        
 
-        
+
+
     });
 
      Route::prefix('/venta')->group(function(){
@@ -53,7 +55,7 @@ Route::middleware('auth')->group(function(){
         Route::post('/ajaxListado', [VentaController::class, 'ajaxListado']);
         Route::post('/guardarVenta', [VentaController::class, 'guardarVenta']);
         Route::post('/eliminarVenta', [VentaController::class, 'eliminarVenta']);
-  
+
     });
 
     Route::prefix('/sucursal')->group(function(){
@@ -63,7 +65,7 @@ Route::middleware('auth')->group(function(){
         Route::post('/eliminarSucursal', [SucursalController::class, 'eliminarSucursal']);
 
     });
-       
+
     Route::prefix('/categoria')->group(function(){
         Route::get('/listado', [CategoriaController::class, 'listado']);
         Route::post('/ajaxListado', [CategoriaController::class, 'ajaxListado']);
@@ -79,14 +81,20 @@ Route::middleware('auth')->group(function(){
         Route::post('/eliminarRol', [RolController::class, 'eliminarRol']);
     });
 
-    
+
     Route::prefix('/producto')->group(function(){
         Route::get('/listado', [ProductController::class, 'listado']);
         Route::post('/ajaxListado', [ProductController::class, 'ajaxListado']);
         Route::post('/guardarProducto', [ProductController::class, 'guardarProducto']);
         // Route::post('/eliminarRol', [RolController::class, 'eliminarRol']);
     });
+
+    Route::prefix('/onedrive')->group(function(){
+        Route::get('/auth/redirect', [AuthControllerOneDrive::class, 'redirectToProvider']);
+        Route::get('/auth/callback', [AuthControllerOneDrive::class, 'handleProviderCallback']);
+        Route::post('/upload', [OnDriveController::class, 'upload']);
+    });
 });
 
-    
+
 

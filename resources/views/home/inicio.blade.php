@@ -4,8 +4,33 @@
 @endsection
 
 @section('content')
+
+<div class="row">
+    <div class="col-md-12">
+        {{--  <iframe title="Dashboard Financiero POwer BI" width="1024" height="804" src="https://app.powerbi.com/view?r=eyJrIjoiOTVkMGI3NjctZTE0Ny00ZmQ1LWE0YTUtOWNhZGJmNGExZjdlIiwidCI6IjdkNjk1NDcyLWUwMTktNGRjNi05NTBiLTNiMzU5OGEzOGJkMiIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>  --}}
+        {{--  <iframe title="Dashboard Financiero POwer BI" width="1024" height="1060" src="https://app.powerbi.com/view?r=eyJrIjoiOTVkMGI3NjctZTE0Ny00ZmQ1LWE0YTUtOWNhZGJmNGExZjdlIiwidCI6IjdkNjk1NDcyLWUwMTktNGRjNi05NTBiLTNiMzU5OGEzOGJkMiIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>  --}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- resources/views/upload.blade.php -->
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Upload File to OneDrive</title>
+        </head>
+        <body>
+            <form action="{{ url('onedrive/upload') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="file" required>
+                <button type="submit">Upload</button>
+            </form>
+        </body>
+        </html>
+    </div>
+</div>
 <!--begin::Row-->
-<div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
+{{--  <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
     <!--begin::Col-->
     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
         <!--begin::Card widget 20-->
@@ -337,7 +362,7 @@
                 <div class="mb-10">
                     <!--begin::Title-->
                     <div class="fs-2hx fw-bold text-gray-800 text-center mb-13">
-                    <span class="me-2">Try our all new Enviroment with 
+                    <span class="me-2">Try our all new Enviroment with
                     <br />
                     <span class="position-relative d-inline-block text-danger">
                         <a href="pages/user-profile/overview.html" class="text-danger opacity-75-hover">Pro Plan</a>
@@ -363,10 +388,10 @@
         <!--end::Engage widget 10-->
     </div>
     <!--end::Col-->
-</div>
+</div>  --}}
 <!--end::Row-->
 <!--begin::Row-->
-<div class="row gx-5 gx-xl-10">
+{{--  <div class="row gx-5 gx-xl-10">
     <!--begin::Col-->
     <div class="col-xxl-6 mb-5 mb-xl-10">
         <!--begin::Chart widget 8-->
@@ -1442,10 +1467,10 @@
         <!--end::Tables widget 16-->
     </div>
     <!--end::Col-->
-</div>
+</div>  --}}
 <!--end::Row-->
 <!--begin::Row-->
-<div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+{{--  <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
     <!--begin::Col-->
     <div class="col-xxl-6">
         <!--begin::Card widget 18-->
@@ -1567,7 +1592,7 @@
                                 </div>
                                 <!--end::Users group-->
                                 <!--begin::Actions-->
-                                <a href="apps/projects/project.html" class="d-flex align-items-center text-primary opacity-75-hover fs-6 fw-semibold">View Project 
+                                <a href="apps/projects/project.html" class="d-flex align-items-center text-primary opacity-75-hover fs-6 fw-semibold">View Project
                                 <i class="ki-duotone ki-exit-right-corner fs-4 ms-1">
                                     <span class="path1"></span>
                                     <span class="path2"></span>
@@ -1631,10 +1656,10 @@
         <!--end::Chart widget 36-->
     </div>
     <!--end::Col-->
-</div>
+</div>  --}}
 <!--end::Row-->
 <!--begin::Row-->
-<div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+{{--  <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
     <!--begin::Col-->
     <div class="col-xl-4">
         <!--begin::Chart Widget 35-->
@@ -2333,10 +2358,10 @@
         <!--end::Table widget 14-->
     </div>
     <!--end::Col-->
-</div>
+</div>  --}}
 <!--end::Row-->
 <!--begin::Row-->
-<div class="row gx-5 gx-xl-10">
+{{--  <div class="row gx-5 gx-xl-10">
     <!--begin::Col-->
     <div class="col-xl-4 mb-5 mb-xl-0">
         <!--begin::Chart widget 31-->
@@ -2472,7 +2497,7 @@
         <!--end::Chart widget 24-->
     </div>
     <!--end::Col-->
-</div>
+</div>  --}}
 <!--end::Row-->
 @stop
 
