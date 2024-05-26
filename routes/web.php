@@ -93,6 +93,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/auth/redirect', [AuthControllerOneDrive::class, 'redirectToProvider']);
         Route::get('/auth/callback', [AuthControllerOneDrive::class, 'handleProviderCallback']);
         Route::post('/upload', [OnDriveController::class, 'upload']);
+        Route::get('/generaArchivo', [OnDriveController::class, 'generaArchivo']);
     });
 });
 

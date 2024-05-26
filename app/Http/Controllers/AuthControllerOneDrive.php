@@ -22,7 +22,7 @@ class AuthControllerOneDrive extends Controller
         $authorizationUrl = $oauthClient->getAuthorizationUrl();
         session(['oauth2state' => $oauthClient->getState()]);
 
-        // dd($authorizationUrl, session('oauth2state'));
+        dd($authorizationUrl, session('oauth2state'));
 
         return redirect()->away($authorizationUrl);
     }
@@ -55,7 +55,7 @@ class AuthControllerOneDrive extends Controller
                 'code' => $request->input('code')
             ]);
 
-            session(['accessToken' => $accessToken->getToken()]);
+            session(['oauth2state' => $accessToken->getToken()]);
 
             return redirect('/onedrive/upload');
         } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {

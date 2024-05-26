@@ -25,13 +25,13 @@
                                     <input type="hidden" id="categoria_id" name="categoria_id">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-8">
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Descripcion</label>
                                     <input type="text" id="descripcion" name="descripcion" class="form-control form-control-solid mb-3 mb-lg-0">
                                 </div>
                             </div>
-                           
+
                         </div>
                         </form>
                     <div class="row">
@@ -176,7 +176,7 @@
 
             </div>
         </div>
-    </div> 
+    </div>
 @stop()
 
 @section('js')
@@ -227,7 +227,7 @@
             $('#categoria_id').val(0)
             $('#nombres').val("")
             $('#descripcion').val("")
-         
+
             $('#modal_new_categoria').modal('show')
         }
 
@@ -254,11 +254,11 @@
         }
 
         function editarCategoria(id,nombres,descripcion){
-           
+
             $('#categoria_id').val(id)
             $('#nombres').val(nombres)
             $('#descripcion').val(descripcion)
-         
+
             $('#modal_new_categoria').modal('show')
         }
 

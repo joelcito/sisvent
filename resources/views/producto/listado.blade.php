@@ -46,7 +46,7 @@
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Nombre</label>
                                     <input type="text" id="nombres" name="nombres" class="form-control form-control-solid mb-3 mb-lg-0">
-                                    <input type="text" id="producto_id" name="producto_id">
+                                    <input type="hidden" id="producto_id" name="producto_id">
                                 </div>
                             </div>
                             <div class="col-md-8">
@@ -109,7 +109,7 @@
 
             </div>
         </div>
-    </div> 
+    </div>
 @stop()
 
 @section('js')
@@ -147,9 +147,12 @@
         function nuevoProducto(){
 
             $('#producto_id').val(0)
-            // $('#nombres').val("")
-            // $('#descripcion').val("")
-            
+            $('#descripcion').val("")
+            $('#nombres').val("")
+            $('#codigo').val("")
+            $('#precio').val(0)
+            $('#stock').val(0)
+
             $('#modal_new_producto').modal('show')
         }
 
@@ -179,7 +182,7 @@
         //     $('#rol_id').val(id)
         //     $('#nombres').val(nombres)
         //     $('#descripcion').val(descripcion)
-        
+
         //     $('#modal_new_rol').modal('show')
         // }
 
@@ -216,7 +219,7 @@
         //             });
         //         }
         //     });
-        // } 
+        // }
 
     </script>
 @endsection

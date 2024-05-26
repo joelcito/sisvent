@@ -3,15 +3,21 @@
 
 @endsection
 
+@section('metadatos')
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+@endsection
+
 @section('content')
 
 <div class="row">
     <div class="col-md-12">
+        <button class="btn w-100 btn-sm btn-success" onclick="actualizar()">Actualizar reporte</button>
         {{--  <iframe title="Dashboard Financiero POwer BI" width="1024" height="804" src="https://app.powerbi.com/view?r=eyJrIjoiOTVkMGI3NjctZTE0Ny00ZmQ1LWE0YTUtOWNhZGJmNGExZjdlIiwidCI6IjdkNjk1NDcyLWUwMTktNGRjNi05NTBiLTNiMzU5OGEzOGJkMiIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>  --}}
-        {{--  <iframe title="Dashboard Financiero POwer BI" width="1024" height="1060" src="https://app.powerbi.com/view?r=eyJrIjoiOTVkMGI3NjctZTE0Ny00ZmQ1LWE0YTUtOWNhZGJmNGExZjdlIiwidCI6IjdkNjk1NDcyLWUwMTktNGRjNi05NTBiLTNiMzU5OGEzOGJkMiIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>  --}}
+        <hr>
+        <iframe title="Dashboard Financiero POwer BI" width="1024" height="1060" src="https://app.powerbi.com/view?r=eyJrIjoiOTVkMGI3NjctZTE0Ny00ZmQ1LWE0YTUtOWNhZGJmNGExZjdlIiwidCI6IjdkNjk1NDcyLWUwMTktNGRjNi05NTBiLTNiMzU5OGEzOGJkMiIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>
     </div>
 </div>
-<div class="row">
+{{--  <div class="row">
     <div class="col-md-12">
         <!-- resources/views/upload.blade.php -->
         <!DOCTYPE html>
@@ -28,7 +34,7 @@
         </body>
         </html>
     </div>
-</div>
+</div>  --}}
 <!--begin::Row-->
 {{--  <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
     <!--begin::Col-->
@@ -2502,5 +2508,38 @@
 @stop
 
 @section('js')
+
+    <script type="text/javascript">
+
+        $.ajaxSetup({
+            // definimos cabecera donde estarra el token y poder hacer nuestras operaciones de put,post...
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+
+        function actualizar(){
+            $.ajax({
+                url : "{{ url('onedrive/generaArchivo') }}",
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+
+                    console.log(data)
+
+                    {{--  if(data.estado === 'success'){
+                        Swal.fire({
+                            icon:'success',
+                            title: 'Exito!',
+                            text:"Se registro con exito!",
+                            timer:1500
+                        })
+                        ajaxListado();
+                        $('#modal_new_rol').modal('hide')
+                    }  --}}
+                }
+            });
+        }
+    </script>
 
 @endsection
