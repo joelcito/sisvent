@@ -94,6 +94,9 @@ Route::middleware('auth')->group(function(){
         Route::get('/auth/callback', [AuthControllerOneDrive::class, 'handleProviderCallback']);
         Route::post('/upload', [OnDriveController::class, 'upload']);
         Route::get('/generaArchivo', [OnDriveController::class, 'generaArchivo']);
+        Route::post('/actuApriori', [OnDriveController::class, 'actuApriori']);
+
+
     });
 });
 

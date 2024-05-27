@@ -31,7 +31,7 @@
                                     <input type="decimal" id="total_venta" name="total_venta" class="form-control form-control-solid mb-3 mb-lg-0">
                                 </div>
                             </div>
-                     
+
                         </div>
                     </form>
                     <div class="row">
@@ -121,6 +121,7 @@
             </div>
             <div class="card-toolbar">
                 <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                    <a href="{{ url('cliente/listado') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Nueva Venta</a>
                     {{-- <button type="button" class="btn btn-primary" onclick="nuevaVenta()">
                     <i class="ki-duotone ki-plus fs-2"></i>Nueva Venta</button> --}}
                 </div>
@@ -176,13 +177,13 @@
 
             </div>
         </div>
-    </div> 
+    </div>
 @stop()
 
 @section('js')
-    
+
     <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
-    
+
     <script type="text/javascript">
 
         $.ajaxSetup({
@@ -218,7 +219,7 @@
             $('#venta_id').val(0)
             $('#fecha_venta').val("")
             $('#total_venta').val("")
-           
+
 
             $('#modal_new_venta').modal('show')
         }
@@ -249,7 +250,7 @@
             $('#venta_id').val(id)
             $('#fecha_venta').val(fecha_venta)
             $('#total_venta').val(total_venta)
-           
+
             $('#modal_new_venta').modal('show')
         }
 
@@ -287,5 +288,5 @@
                 }
             });
         }
-    </script>   
+    </script>
 @endsection

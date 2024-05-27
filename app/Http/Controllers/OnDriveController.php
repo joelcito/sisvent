@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Detalle;
+use App\Models\Venta;
 use DateTime;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -514,4 +515,155 @@ try {
         return response()->json(['message' => 'Archivo exportado correctamente']);
         */
     }
+
+    public function actuApriori(Request $request){
+        if($request->ajax()){
+            // dd($request->all());
+
+
+
+            // Obtener datos del formulario
+            $data = $this->getDatos();
+            // $data = [
+            //             ["milk", "bread", "butter"],
+            //             ["beer", "bread"],
+            //             ["milk", "beer", "bread", "butter"],
+            //             ["bread", "butter"],
+            //             ["milk", "butter"]
+            // ];
+
+            // $data = [
+            //             ["TELEVISOR 49 PLG", "SOPORTE DE TELEVISOR", "PARLANTE"],
+            //             ["SOPORTE DE TELEVISOR", "TELEVISOR 49 PLG"],
+            //             ["SOPORTE DE TELEVISOR", "PARLANTE", "SMART TV", "TELEVISOR 49 PLG"],
+            //             ["bread", "butter"],
+            //             ["bread", "butter"],
+            //             ["milk", "butter"]
+            // ];
+
+
+            // dd($data);
+
+            // Procesar el algoritmo Apriori
+            $result = $this->apriori($data, 0.5, 0.7);
+
+            $data['estado'] = 'success';
+            $data['resultado'] = $result;
+        }else{
+            $data['estado'] = 'error';
+        }
+        return $data;
+    }
+
+    private function getDatos(){
+        $array = array();
+        $ventas = Venta::all();
+        foreach ($ventas as $key => $v) {
+            $arrayDetaller = array();
+            $datelles = Detalle::where('venta_id', $v->id)->get();
+            foreach ($datelles as $key => $d) {
+                array_push($arrayDetaller, $d->producto->nombre);
+            }
+            array_push($array, $arrayDetaller);
+        }
+        return $array;
+    }
+
+
+
+    private function apriori($data, $min_support, $min_confidence)
+    {
+        // $transactions = json_decode($data, true);
+        $transactions = $data;
+
+        $calculate_support = function($itemset, $transactions) {
+            $count = 0;
+            foreach ($transactions as $transaction) {
+                if (count(array_intersect($itemset, $transaction)) == count($itemset)) {
+                    $count++;
+                }
+            }
+            return $count / count($transactions);
+        };
+
+        $itemsets = [];
+        $frequent_itemsets = [];
+        $rules = [];
+
+        $items = [];
+        foreach ($transactions as $transaction) {
+            foreach ($transaction as $item) {
+                if (!isset($items[$item])) {
+                    $items[$item] = 0;
+                }
+                $items[$item]++;
+            }
+        }
+        foreach ($items as $item => $count) {
+            $support = $count / count($transactions);
+            if ($support >= $min_support) {
+                $frequent_itemsets[] = [[$item], $support];
+            }
+        }
+
+        $k = 2;
+        while (true) {
+            $candidate_itemsets = [];
+            foreach ($frequent_itemsets as $itemset) {
+                foreach ($frequent_itemsets as $itemset2) {
+                    if (count(array_diff($itemset[0], $itemset2[0])) == 1) {
+                        $candidate_itemsets[] = array_unique(array_merge($itemset[0], $itemset2[0]));
+                    }
+                }
+            }
+            $candidate_itemsets = array_unique($candidate_itemsets, SORT_REGULAR);
+            $frequent_itemsets = [];
+            foreach ($candidate_itemsets as $itemset) {
+                $support = $calculate_support($itemset, $transactions);
+                if ($support >= $min_support) {
+                    $frequent_itemsets[] = [$itemset, $support];
+                }
+            }
+            if (empty($frequent_itemsets)) {
+                break;
+            }
+            $itemsets = array_merge($itemsets, $frequent_itemsets);
+            $k++;
+        }
+
+        foreach ($itemsets as $itemset) {
+            if (count($itemset[0]) > 1) {
+                $subsets = $this->generate_subsets($itemset[0]);
+                foreach ($subsets as $subset) {
+                    $antecedent = $subset;
+                    $consequent = array_diff($itemset[0], $subset);
+                    if (!empty($consequent)) {
+                        $confidence = $calculate_support($itemset[0], $transactions) / $calculate_support($antecedent, $transactions);
+                        if ($confidence >= $min_confidence) {
+                            $rules[] = [$antecedent, array_values($consequent), $confidence];
+                        }
+                    }
+                }
+            }
+        }
+
+        return ['frequent_itemsets' => $itemsets, 'rules' => $rules];
+    }
+
+    private function generate_subsets($items)
+    {
+        $subsets = [];
+        $total = 1 << count($items);
+        for ($i = 1; $i < $total; $i++) {
+            $subset = [];
+            for ($j = 0; $j < count($items); $j++) {
+                if ($i & (1 << $j)) {
+                    $subset[] = $items[$j];
+                }
+            }
+            $subsets[] = $subset;
+        }
+        return $subsets;
+    }
+
 }
