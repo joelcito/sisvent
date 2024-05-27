@@ -546,9 +546,12 @@ try {
 
             // Procesar el algoritmo Apriori
             $result = $this->apriori($data, 0.5, 0.7);
+            // dd($this->purchaseCounts($data));
+            $linea = $this->purchaseCounts($data);
 
-            $data['estado'] = 'success';
+            $data['estado']    = 'success';
             $data['resultado'] = $result;
+            $data['linea']     = $linea;
         }else{
             $data['estado'] = 'error';
         }
@@ -664,6 +667,30 @@ try {
             $subsets[] = $subset;
         }
         return $subsets;
+    }
+
+    private function purchaseCounts($data){
+        $counts = [];
+        foreach ($data as $purchase) {
+            foreach ($purchase as $item) {
+                if (!isset($counts[$item])) {
+                    $counts[$item] = 1;
+                } else {
+                    $counts[$item]++;
+                }
+            }
+        }
+
+        // Preparar datos para el gráfico
+        $labels = [];
+        $purchaseCounts = [];
+        foreach ($counts as $item => $count) {
+            $labels[] = $item;
+            $purchaseCounts[] = $count;
+        }
+
+        return ['labels' => $labels, 'purchaseCounts' => $purchaseCounts];
+         
     }
 
 }
