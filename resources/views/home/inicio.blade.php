@@ -15,7 +15,8 @@
         {{--  <iframe title="Dashboard Financiero POwer BI" width="1024" height="804" src="https://app.powerbi.com/view?r=eyJrIjoiOTVkMGI3NjctZTE0Ny00ZmQ1LWE0YTUtOWNhZGJmNGExZjdlIiwidCI6IjdkNjk1NDcyLWUwMTktNGRjNi05NTBiLTNiMzU5OGEzOGJkMiIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>  --}}
         <hr>
         {{-- <h1 class="text-center">POWE RBI</h1> --}}
-         <iframe title="Dashboard Financiero POwer BI" width="1024" height="1060" src="https://app.powerbi.com/view?r=eyJrIjoiOTVkMGI3NjctZTE0Ny00ZmQ1LWE0YTUtOWNhZGJmNGExZjdlIiwidCI6IjdkNjk1NDcyLWUwMTktNGRjNi05NTBiLTNiMzU5OGEzOGJkMiIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe> 
+         {{--  <iframe title="Dashboard Financiero POwer BI" width="1024" height="1060" src="https://app.powerbi.com/view?r=eyJrIjoiOTVkMGI3NjctZTE0Ny00ZmQ1LWE0YTUtOWNhZGJmNGExZjdlIiwidCI6IjdkNjk1NDcyLWUwMTktNGRjNi05NTBiLTNiMzU5OGEzOGJkMiIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>   --}}
+         <iframe title="Dashboard Financiero POwer BI" width="100%" height="700" src="https://app.powerbi.com/view?r=eyJrIjoiOTVkMGI3NjctZTE0Ny00ZmQ1LWE0YTUtOWNhZGJmNGExZjdlIiwidCI6IjdkNjk1NDcyLWUwMTktNGRjNi05NTBiLTNiMzU5OGEzOGJkMiIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>
         <hr>
         <div class="row">
             <div class="col-md-12">
@@ -56,7 +57,7 @@
         var associationRulesChart;
         var frequentItemsetsChart;
         var myChart_Linea;
-        
+
 
         $.ajaxSetup({
             // definimos cabecera donde estarra el token y poder hacer nuestras operaciones de put,post...
@@ -159,7 +160,7 @@
 
                     var labels         = data.linea.labels;
                     var purchaseCounts = data.linea.purchaseCounts;
-                    
+
                     myChart_Linea = new Chart(ctx3, {
                         type: 'line',
                         data: {
@@ -181,7 +182,7 @@
                         }
                     });
 
-                    
+
 
                 }
             });
