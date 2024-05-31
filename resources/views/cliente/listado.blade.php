@@ -94,7 +94,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="nombre_cliente_elegido" name="nombre_cliente_elegido">
-                        <input type="text" id="cliente_id_cliente_elegido" name="cliente_id_cliente_elegido">
+                        <input type="hidden" id="cliente_id_cliente_elegido" name="cliente_id_cliente_elegido">
                     </div>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="ap_paterno_cliente_elegido" name="ap_paterno_cliente_elegido">
@@ -107,42 +107,45 @@
                     </div>
                 </div>
                 <hr>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="fs-6 fw-semibold form-label mb-2">Productos</label>
-                        <select data-control="select2" name="producto_id_new_venta" id="producto_id_new_venta" data-placeholder="Seleccione" data-hide-search="true" class="form-select form-select-solid fw-bold" onchange="recibirProducto(this)">
-                            <option></option>
-                            @foreach ( $productos as $pro)
-                            <option value="{{ $pro->id }}">{{ $pro->nombre }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="fv-row mb-7">
-                            <label class="required fw-semibold fs-6 mb-2">Precio</label>
-                            <input type="text" id="precio_producto_new_venta" name="precio_producto_new_venta" class="form-control form-control-solid mb-3 mb-lg-0">
+                <form id="formularioNuevaVenta">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="fs-6 fw-semibold form-label mb-2">Productos</label>
+                            <select data-control="select2" name="producto_id_new_venta" id="producto_id_new_venta" data-placeholder="Seleccione" data-hide-search="true" class="form-select form-select-solid fw-bold" onchange="recibirProducto(this)" required>
+                                <option></option>
+                                @foreach ( $productos as $pro)
+                                <option value="{{ $pro->id }}">{{ $pro->nombre }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="fv-row mb-7">
+                                <label class="required fw-semibold fs-6 mb-2">Precio</label>
+                                <input type="text" id="precio_producto_new_venta" name="precio_producto_new_venta" class="form-control form-control-solid mb-3 mb-lg-0" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="fv-row mb-7">
+                                <label class="required fw-semibold fs-6 mb-2">Stock</label>
+                                <input type="text" id="stock_producto_new_venta" name="stock_producto_new_venta" class="form-control form-control-solid mb-3 mb-lg-0" required>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="fv-row mb-7">
-                            <label class="required fw-semibold fs-6 mb-2">Stock</label>
-                            <input type="text" id="stock_producto_new_venta" name="stock_producto_new_venta" class="form-control form-control-solid mb-3 mb-lg-0">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="fv-row mb-7">
+                                <label class="required fw-semibold fs-6 mb-2">Cantidad</label>
+                                <input type="number" id="cantidad_producto_new_venta" name="cantidad_producto_new_venta" class="form-control form-control-solid mb-3 mb-lg-0" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="fv-row mb-7 mt-9">
+                                <button class="btn btn-success w-100 btn-sm" type="button" onclick="agregarProducuto()"><i class="fa fa-plus"></i> Agregar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="fv-row mb-7">
-                            <label class="required fw-semibold fs-6 mb-2">Cantidad</label>
-                            <input type="text" id="cantidad_producto_new_venta" name="cantidad_producto_new_venta" class="form-control form-control-solid mb-3 mb-lg-0">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="fv-row mb-7 mt-9">
-                            <button class="btn btn-success w-100 btn-sm" onclick="agregarProducuto()"><i class="fa fa-plus"></i> Agregar</button>
-                        </div>
-                    </div>
-                </div>
+                </form>
+
                 <hr>
                 <h3 class="text-info text-center">Productos Agregados</h3>
                 <div id="tabla_productos_agregados">
@@ -155,16 +158,6 @@
 
 @section('js')
     <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
-
-    {{--  <script src="{{ asset('assets/js/custom/apps/user-management/users/list/table.js') }}"></script>  --}}
-    {{--  <script src="{{ asset('assets/js/custom/apps/user-management/users/list/export-users.js') }}"></script>  --}}
-    {{--  <script src="{{ asset('assets/js/custom/apps/user-management/users/list/add.js') }}"></script>  --}}
-    {{--  <script src="{{ asset('assets/js/widgets.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/apps/chat/chat.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/utilities/modals/upgrade-plan.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/utilities/modals/create-app.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/utilities/modals/users-search.js') }}"></script>  --}}
 
     <script type="text/javascript">
 
@@ -310,25 +303,29 @@
         }
 
         function agregarProducuto(){
-            let cliente_id = $('#cliente_id_cliente_elegido').val()
-            let datos = {
-                cliente_id : cliente_id,
-                producto_id: $('#producto_id_new_venta').val(),
-                cantidad   : $('#cantidad_producto_new_venta').val(),
-            }
-            $.ajax({
-                url : "{{ url('cliente/agregarProducuto') }}",
-                type: 'POST',
-                data: datos,
-                dataType: 'json',
-                success: function(data) {
-                    if(data.estado === 'success'){
-                        ajaxListadoProductosAgregados(cliente_id)
-                        // $('#precio_producto_new_venta').val(data.producto.precio)
-                        // $('#stock_producto_new_venta').val(data.producto.stock)
-                    }
+            if($("#formularioNuevaVenta")[0].checkValidity()){
+                let cliente_id = $('#cliente_id_cliente_elegido').val()
+                let datos = {
+                    cliente_id : cliente_id,
+                    producto_id: $('#producto_id_new_venta').val(),
+                    cantidad   : $('#cantidad_producto_new_venta').val(),
                 }
-            });
+                $.ajax({
+                    url : "{{ url('cliente/agregarProducuto') }}",
+                    type: 'POST',
+                    data: datos,
+                    dataType: 'json',
+                    success: function(data) {
+                        if(data.estado === 'success'){
+                            ajaxListadoProductosAgregados(cliente_id)
+                            // $('#precio_producto_new_venta').val(data.producto.precio)
+                            // $('#stock_producto_new_venta').val(data.producto.stock)
+                        }
+                    }
+                });
+            }else{
+                $("#formularioNuevaVenta")[0].reportValidity()
+            }
         }
 
         function ajaxListadoProductosAgregados(cliente){
