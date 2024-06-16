@@ -13,5 +13,13 @@ class Venta extends Model
     public function cliente(){
         return $this->belongsTo('App\Models\Cliente', 'cliente_id');
     }
-   
-} 
+
+    /**
+     * Relación uno a muchos con Detalle.
+     */
+    public function detalles()
+    {
+        return $this->hasMany(Detalle::class, 'venta_id', 'id');
+    }
+
+}
